@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  database_cepMais:
+    image: postgres
+    container_name: database_cepMais
+    restart: always
+    ports: 
+      - 5432:5432
+    environment: 
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=cepMais
+      - POSTGRES_DB=cepMais
+    volumes: 
+      - pgdata:/data/postgres
+  redis_cepMais:
+    image: redis
+    container_name: redis_cepMais
+    restart: always
+    command: redis-server --requirepass RedisCepMais
+    ports: 
+      - 6379:6379
+  app:
+    build: .
+    container_name: cepMais
+    ports: 
+      - 3333:3333
+    volumes: 
+      - .:/usr/app
+    links:
+      - database_cepMais
+    depends_on: 
+      - database_cepMais
+      - redis_cepMais
+
+volumes: 
+  pgdata:
+    driver: local
