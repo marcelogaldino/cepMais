@@ -104,7 +104,7 @@ $ docker-compose up -d
 $ docker ps #deve listar 3 containers, o cepMais, redis e postgres
 # Rodando as migrations
 $ yarn typeorm migration:run
-# Checando se nossa aplicação esta rodando corretamente
+# Checando se nossa aplicação esta rodando corretamente 
 $ docker logs cepMais -f
 ```
 Neste momento temos a nossa aplicação com o backend e seus serviços em execução, com o backend rodando na porta 3333. *http://localhost:3333*
