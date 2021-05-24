@@ -107,7 +107,7 @@ $ docker logs cepMais -f
 ```
 Neste momento temos a nossa aplicação com o backend e seus serviços em execução, com o backend rodando na porta 3333. *http://localhost:3333*
 
-## Como contribuir :
+## Como contribuir
 
 - Faça um fork;
 - Crie uma nova branch com a sua feature: `git checkout -b my-feature`;
