@@ -102,6 +102,8 @@ $ yarn
 $ docker-compose up -d
 # Verificando os nossos containers que estão rodando
 $ docker ps #deve listar 3 containers, o cepMais, redis e postgres
+# Rodando as migrations
+$ yarn typeorm migration:run
 # Checando se nossa aplicação esta rodando corretamente
 $ docker logs cepMais -f
 ```
