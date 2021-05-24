@@ -1,5 +1,3 @@
-# Podcastr
-
 <h2 align="center">
 CEP MAIS
 </h2>
@@ -33,15 +31,12 @@ CEP MAIS
   <a href="#sobre-o-CEP-MAIS">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <!-- <a href="#try-it-now">How to use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
-  <a href="#how-to-use">How to use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <!-- <a href="#-backstage">Backstage</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
   <a href="#memo-license">License</a>
 </p>
 
-<!-- <p align="center">
-  <img src="https://raw.githubusercontent.com/marcelogaldino/phonebook/main/src/assests/demo.gif" width="1024px"  alt="gif demo"> 
-</p> -->
 
 ## Sobre o CEP MAIS
 
@@ -70,7 +65,6 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
  - [NPM](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/) como gerenciador de pacotes. *Ao instalar o **NodeJS** o **NPM** é instalado automaticamente*.
  - [Docker](https://www.docker.com/) **Recomendado**, mas não necessário. Este projeto possui suporte ao **Docker** o que facilita a configuração do nosso backend, por isso recomendamos 🐳
 
-</br>
 
  ### Vamos começar!! ✍
 
@@ -93,7 +87,7 @@ $ yarn
 # Inicie a aplicação
 $ yarn start
 ```
-Neste momento você deverá ter o seu browser aberto automaticamente rodando a aplicação na porta 3333 *http://localhost:3333*
+Neste momento você deverá ter o seu browser aberto automaticamente rodando a aplicação na porta 3000 *http://localhost:3000*
 
 ## Rodando o backend da aplicação
 É necessário abrir uma nova aba ou um novo terminal para este procedimento
@@ -104,21 +98,25 @@ $ cd ..
 $ cd backend
 # Instale as dependências
 $ yarn
-# Inicie o backend da aplicação
-$ yarn dev
+# Subindo os containers docker da nossa aplicação
+$ docker-compose up -d
+# Verificando os nossos containers que estão rodando
+$ docker ps #deve listar 3 containers, o cepMais, redis e postgres
+# Checando se nossa aplicação esta rodando corretamente
+$ docker logs cepMais -f
 ```
-Neste momento você deverá ter o seu browser aberto automaticamente rodando a aplicação na porta 3333 *http://localhost:3333*
+Neste momento temos a nossa aplicação com o backend e seus serviços em execução, com o backend rodando na porta 3333. *http://localhost:3333*
 
-## 🤔 How to contribute
+## 🤔 Como contribuir :
 
-- Make a fork;
-- Create a branch with your feature: `git checkout -b my-feature`;
-- Commit changes: `git commit -m 'feat: My new feature'`;
-- Make a push to your branch: `git push origin my-feature`.
+- Faça um fork;
+- Crie uma nova branch com a sua feature: `git checkout -b my-feature`;
+- Commit as suas alterações: `git commit -m 'feat: My new feature'`;
+- Empurre para o repositório remoto a sua nova branch: `git push origin my-feature`.
 
-After merging your receipt request to done, you can delete a branch from yours.
+Abra um pull request para analisarmos as mudanças.
 
-You are also free to help this project sending me pull requests and opening issues.
+Você também pode nos ajudar abrindo issues.
 
 ## :memo: License
 
