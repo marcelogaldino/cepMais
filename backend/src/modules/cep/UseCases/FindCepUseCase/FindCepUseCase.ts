@@ -1,6 +1,7 @@
-import Redis from "ioredis";
+// import Redis from "ioredis";
 
 import api from "../../../../utils/api";
+import { ICacheProvider } from "../../../shared/container/provider/cacheProvider/repositories/ICacheProvider";
 import { Cep } from "../../entities/Cep";
 import { ICepRepository } from "../../repositories/ICepRepository";
 
@@ -9,16 +10,15 @@ interface IRequest {
 }
 
 class FindCepUseCase {
-  constructor(private cepRepository: ICepRepository) {}
+  constructor(
+    private cepRepository: ICepRepository,
+    private cacheProvider: ICacheProvider
+  ) {}
 
   async execute({ requestCep }: IRequest): Promise<Cep> {
-    const redis = new Redis({
-      host: "redis_cepMais",
-      port: 6379,
-      password: "RedisCepMais",
-    });
-
-    const isCepDataCached = await redis.get(`cep-data:${requestCep}`);
+    const isCepDataCached = await this.cacheProvider.get(
+      `cep-data:${requestCep}`
+    );
 
     if (!isCepDataCached) {
       const res = await api.get(`${requestCep}/json`);
@@ -31,7 +31,10 @@ class FindCepUseCase {
         data,
       });
 
-      await redis.set(`cep-data:${requestCep}`, JSON.stringify(dataCepSave));
+      await this.cacheProvider.save(
+        `cep-data:${requestCep}`,
+        JSON.stringify(dataCepSave)
+      );
 
       return dataCepSave;
     }

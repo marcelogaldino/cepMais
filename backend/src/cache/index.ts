@@ -1,8 +1,5 @@
-import Redis from "ioredis";
-
-// eslint-disable-next-line no-new
-new Redis({
+export default {
   host: "redis_cepMais",
   port: 6379,
   password: "RedisCepMais",
-});
+};
