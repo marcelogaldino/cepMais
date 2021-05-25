@@ -16,12 +16,14 @@ class FindCepUseCase {
   ) {}
 
   async execute({ requestCep }: IRequest): Promise<Cep> {
+    const formatedCep = requestCep.replace("-", "");
+
     const isCepDataCached = await this.cacheProvider.get(
-      `cep-data:${requestCep}`
+      `cep-data:${formatedCep}`
     );
 
     if (!isCepDataCached) {
-      const res = await api.get(`${requestCep}/json`);
+      const res = await api.get(`${formatedCep}/json`);
 
       const { data } = res;
 
@@ -32,7 +34,7 @@ class FindCepUseCase {
       });
 
       await this.cacheProvider.save(
-        `cep-data:${requestCep}`,
+        `cep-data:${formatedCep}`,
         JSON.stringify(dataCepSave)
       );
 
