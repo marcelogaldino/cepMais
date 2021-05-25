@@ -67,6 +67,10 @@ export const Error = styled.span`
   margin-top: 8px;
 `;
 
+export const ContainerLoader = styled.div`
+  margin: 86px 0 0 316px;
+`;
+
 export const Card = styled.div`
   margin-top: 80px;
   max-width: 600px;
